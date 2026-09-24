@@ -208,46 +208,78 @@
             </button>
         </div>
 
-        <!-- Слайд 2: Шуточный вопрос -->
+        <!-- Слайд 2: 5 Важных вопросов -->
         <div id="slide-2" class="slide flex-col h-full flex-grow">
-            <div class="mb-auto">
-                <span class="text-pink-400 text-sm font-bold tracking-wider uppercase mb-2 block">Короткий тест на драму 🎬</span>
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6">Сообщение прочитано, но ответа нет уже 5 минут. Что происходит на самом деле?</h2>
-                <div class="space-y-3">
-                    <button onclick="selectAnswer(this, 2)" class="quiz-btn w-full text-left p-4 rounded-xl border-2 border-pink-200 bg-white shadow-sm font-medium text-gray-700">
-                        Я придумываю план мести и мысленно пакую чемоданы 🧳
-                    </button>
-                    <button onclick="selectAnswer(this, 2)" class="quiz-btn w-full text-left p-4 rounded-xl border-2 border-pink-200 bg-white shadow-sm font-medium text-gray-700">
-                        Кто-то из нас просто уснул с телефоном в руке 😴
-                    </button>
+            <h2 class="text-2xl cinematic-text text-pink-600 mb-2 mt-2">5 Важных Вопросов</h2>
+            <p class="text-gray-600 text-xs mb-4">Нам нужно сверить наши планы на будущее!</p>
+            
+            <div class="custom-scroll space-y-4 mb-4 overflow-y-auto pr-2 flex-grow text-left max-h-[50vh]">
+                <!-- Q1 -->
+                <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
+                    <p class="text-sm font-semibold mb-2">1. Какой будем строить дом?</p>
+                    <div class="flex gap-2">
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Двухэтажный</button>
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Одноэтажный</button>
+                    </div>
+                </div>
+                
+                <!-- Q2 -->
+                <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
+                    <p class="text-sm font-semibold mb-2">2. Если придется выбрать питомца?</p>
+                    <div class="flex gap-2">
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Собаку 🐶</button>
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Кошку 🐱</button>
+                    </div>
+                </div>
+                
+                <!-- Q3 -->
+                <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
+                    <p class="text-sm font-semibold mb-2">3. Куда отдадим Геора?</p>
+                    <div class="flex gap-2">
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">На борьбу 🤼</button>
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">На футбол ⚽</button>
+                    </div>
+                </div>
+                
+                <!-- Q4 -->
+                <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
+                    <p class="text-sm font-semibold mb-2">4. Ларик сейчас...</p>
+                    <div class="flex gap-2">
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Голодный 🍔</button>
+                        <button onclick="selectOption(this)" class="flex-1 py-2 text-xs font-medium rounded-lg border-2 border-pink-100 bg-white hover:bg-pink-50 transition-colors">Уставший 😴</button>
+                    </div>
+                </div>
+                
+                <!-- Q5 -->
+                <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
+                    <p class="text-sm font-semibold mb-2">5. Какое твое самое яркое воспоминание со мной?</p>
+                    <textarea oninput="checkSlide2Complete()" id="memory-text" rows="3" class="w-full text-sm p-2 rounded-lg border-2 border-pink-100 bg-white focus:outline-none focus:border-pink-400 resize-none" placeholder="Напиши здесь..."></textarea>
                 </div>
             </div>
-            <button id="next-btn-2" onclick="nextSlide(3)" class="hidden w-full bg-pink-500 text-white rounded-full py-3 text-lg font-semibold shadow-md mt-6 transition-all">
-                К детектору чувств ❤️
+            
+            <button id="next-btn-2" onclick="nextSlide(3)" class="w-full bg-gray-300 text-gray-500 rounded-full py-3 text-lg font-semibold shadow-md transition-all pointer-events-none mt-auto">
+                Ответь на все
             </button>
         </div>
 
-        <!-- Слайд 3: Детектор страсти -->
-        <div id="slide-3" class="slide flex-col h-full justify-center flex-grow text-center">
-            <h2 class="text-3xl cinematic-text text-pink-600 mb-4">Детектор чувств</h2>
-            <p class="text-gray-600 mb-8 text-sm">Насколько сильно ты ждешь наши встречи?</p>
+        <!-- Слайд 3: Лотерейный билетик "Сотри слой" -->
+        <div id="slide-3" class="slide flex-col h-full justify-center flex-grow text-center relative">
+            <h2 class="text-3xl cinematic-text text-pink-600 mb-2 mt-2">Сотри слой</h2>
+            <p class="text-gray-600 mb-6 text-sm">Потри экран пальцем (или мышкой), чтобы узнать, что под защитным слоем!</p>
             
-            <div class="flex justify-center mb-10 h-32 items-center">
-                <div id="beating-heart" class="text-pink-500 text-6xl transition-all duration-300 transform scale-50 opacity-50">
-                    <i class="fa-solid fa-heart"></i>
+            <div class="relative w-full max-w-[280px] mx-auto aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white my-auto">
+                <!-- Секретный текст снизу -->
+                <div class="absolute inset-0 bg-gradient-to-br from-pink-100 to-rose-200 flex flex-col items-center justify-center p-4">
+                    <span class="text-4xl mb-2">🎟️</span>
+                    <h3 class="text-xl font-black text-pink-600 mb-1 leading-tight">Безлимитный<br>абонемент</h3>
+                    <p class="text-xs font-medium text-pink-800">на мою любовь, заботу и шуточки до конца жизни!</p>
                 </div>
+                <!-- Холст для стирания сверху -->
+                <canvas id="scratch-canvas" class="absolute inset-0 w-full h-full cursor-pointer touch-none"></canvas>
             </div>
 
-            <div class="w-full mb-8">
-                <input type="range" min="1" max="100" value="1" id="passion-slider" oninput="updateHeart(this.value)">
-                <div class="flex justify-between text-xs text-pink-400 font-semibold mt-2 px-1 uppercase">
-                    <span>Чуть-чуть</span>
-                    <span id="passion-text">Очень!</span>
-                </div>
-            </div>
-
-            <button id="next-btn-3" onclick="nextSlide(4)" class="hidden w-full bg-pink-500 text-white rounded-full py-3 text-lg font-semibold shadow-md mt-auto transition-all">
-                Проверка пройдена ❤️
+            <button id="next-btn-3" onclick="nextSlide(4)" class="opacity-0 transition-opacity duration-1000 w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-full py-3.5 text-lg font-semibold shadow-md mt-8 pointer-events-none">
+                Забрать выигрыш 🎁
             </button>
         </div>
 
@@ -440,6 +472,11 @@
                 currentSlideIndex = slideNumber;
                 updateDebugPanel();
 
+                if(slideNumber === 3 && !window.scratchInitialized) {
+                    setTimeout(initScratchCard, 300); // Wait for transition
+                    window.scratchInitialized = true;
+                }
+
                 if(slideNumber === 4 && !gameInitialized) {
                     initMemoryGame();
                     gameInitialized = true;
@@ -478,29 +515,110 @@
         }
         setInterval(createHeart, 400);
 
-        function selectAnswer(buttonElement, slideNumber) {
-            const buttons = buttonElement.parentElement.querySelectorAll('button');
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            buttonElement.classList.add('selected');
-            document.getElementById('next-btn-' + slideNumber).classList.remove('hidden');
+        function selectOption(btn) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-pink-500', 'text-white', 'border-pink-500', 'selected');
+                b.classList.add('bg-white', 'text-gray-800', 'border-pink-100');
+            });
+            btn.classList.remove('bg-white', 'text-gray-800', 'border-pink-100');
+            btn.classList.add('bg-pink-500', 'text-white', 'border-pink-500', 'selected');
+            checkSlide2Complete();
         }
 
-        function updateHeart(value) {
-            const heart = document.getElementById('beating-heart');
-            const scale = 0.5 + (value / 100) * 1.2; 
-            const opacity = 0.3 + (value / 100) * 0.7;
+        function checkSlide2Complete() {
+            const selectedCount = document.querySelectorAll('#slide-2 .selected').length;
+            const textLen = document.getElementById('memory-text').value.trim().length;
+            const nextBtn = document.getElementById('next-btn-2');
             
-            heart.style.transform = `scale(${scale})`;
-            heart.style.opacity = opacity;
+            if (selectedCount === 4 && textLen > 0) {
+                nextBtn.classList.remove('bg-gray-300', 'text-gray-500', 'pointer-events-none');
+                nextBtn.classList.add('bg-gradient-to-r', 'from-pink-500', 'to-rose-500', 'text-white', 'shadow-lg');
+                nextBtn.innerText = "Дальше ✨";
+            } else {
+                nextBtn.classList.add('bg-gray-300', 'text-gray-500', 'pointer-events-none');
+                nextBtn.classList.remove('bg-gradient-to-r', 'from-pink-500', 'to-rose-500', 'text-white', 'shadow-lg');
+                nextBtn.innerText = "Ответь на все вопросы";
+            }
+        }
 
-            const text = document.getElementById('passion-text');
-            if (value < 30) text.innerText = 'Скучаешь?';
-            else if (value < 70) text.innerText = 'Очень!';
-            else if (value < 99) text.innerText = 'СИЛЬНО!';
-            else text.innerText = 'МАКСИМУМ! 🔥';
+        function initScratchCard() {
+            const canvas = document.getElementById('scratch-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            
+            ctx.fillStyle = '#cbd5e1';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#64748b';
+            ctx.font = 'bold 20px Montserrat';
+            ctx.textAlign = 'center';
+            ctx.fillText('Сотри меня  монеткой', canvas.width/2, canvas.height/2);
 
-            if(value > 90) {
-                document.getElementById('next-btn-3').classList.remove('hidden');
+            let isDrawing = false;
+            const stride = 4;
+            const totalPixels = canvas.width * canvas.height;
+            
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            function scratch(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const pos = getPos(e);
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 25, 0, Math.PI * 2);
+                ctx.fill();
+                checkScratchProgress();
+            }
+
+            canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+            canvas.addEventListener('mousemove', scratch);
+            window.addEventListener('mouseup', () => { isDrawing = false; });
+            
+            canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, {passive: false});
+            canvas.addEventListener('touchmove', scratch, {passive: false});
+            window.addEventListener('touchend', () => { isDrawing = false; });
+
+            let lastCheck = 0;
+            let finished = false;
+            function checkScratchProgress() {
+                if (finished) return;
+                const now = Date.now();
+                if (now - lastCheck < 150) return;
+                lastCheck = now;
+                
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let cleared = 0;
+                for (let i = 3; i < imageData.length; i += 4 * stride) {
+                    if (imageData[i] === 0) cleared++;
+                }
+                const clearedPercentage = cleared / (totalPixels / stride);
+                
+                if (clearedPercentage > 0.45) {
+                    finished = true;
+                    canvas.style.transition = 'opacity 0.5s';
+                    canvas.style.opacity = '0';
+                    setTimeout(() => canvas.remove(), 500);
+                    const btn = document.getElementById('next-btn-3');
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                    btn.classList.add('opacity-100');
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+                    }
+                }
             }
         }
 
