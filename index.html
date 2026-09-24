@@ -648,17 +648,22 @@
             msg.className = "mt-2.5 bg-white/95 rounded-xl py-1.5 px-2.5 text-xs font-semibold text-gray-700 shadow min-h-[38px] flex items-center justify-center transition-all animate-pulse border border-pink-100";
             msg.innerHTML = "🎰 Барабаны крутятся... Испытываем судьбу!";
 
+            let r1Stopped = false;
+            let r2Stopped = false;
+            let r3Stopped = false;
+
             let counter = 0;
             const spinInterval = setInterval(() => {
                 if (counter % 2 === 0) playSlotSound('spin');
-                r1.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                r2.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                r3.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                if (!r1Stopped) r1.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                if (!r2Stopped) r2.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                if (!r3Stopped) r3.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                 counter++;
             }, 60);
 
             // Быстрый динамичный стоп барабанов
             setTimeout(() => {
+                r1Stopped = true;
                 r1.innerText = round.reels[0];
                 r1.classList.add('scale-110');
                 playSlotSound('stop');
@@ -666,6 +671,7 @@
             }, 300);
 
             setTimeout(() => {
+                r2Stopped = true;
                 r2.innerText = round.reels[1];
                 r2.classList.add('scale-110');
                 playSlotSound('stop');
@@ -673,6 +679,7 @@
             }, 500);
 
             setTimeout(() => {
+                r3Stopped = true;
                 clearInterval(spinInterval);
                 r3.innerText = round.reels[2];
                 r3.classList.add('scale-110');
