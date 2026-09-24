@@ -321,16 +321,12 @@
                 </div>
 
                 <!-- Табло баланса и раунда -->
-                <div class="bg-gray-900/90 rounded-xl p-2.5 mb-2.5 border-2 border-yellow-300/60 shadow-inner flex justify-between items-center text-left">
+                <div class="bg-gray-900/90 rounded-xl p-2.5 mb-2.5 border-2 border-yellow-300/60 shadow-inner flex justify-center items-center text-center">
                     <div>
                         <span class="text-[9px] uppercase tracking-wider text-pink-300 font-semibold block">Баланс подарка</span>
                         <div class="text-2xl font-black text-yellow-300 font-mono tracking-wide" id="slot-balance">
                             0 ₽
                         </div>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-[9px] uppercase tracking-wider text-gray-400 font-semibold block">Спин</span>
-                        <span id="slot-spins-left" class="text-sm font-bold text-pink-200 font-mono">1 / 30</span>
                     </div>
                 </div>
 
@@ -520,27 +516,20 @@
             { reels: ['🍋', '💣', '🍒'], delta: -1500, balance: 3500, text: '💣 Казино сопротивляется! -1 500 ₽', isWin: false },
             { reels: ['🍫', '🍫', '🍫'], delta: 1500, balance: 5000, text: '🍬 ТРИ ШОКОЛАДА! +1 500 ₽ И ВЫИГРАНА КОРОБКА КОНФЕТ! 🍫', isWin: true, prize: 'sweets' },
             { reels: ['👑', '💎', '👑'], delta: -1500, balance: 3500, text: '👑 Корона мимо! -1 500 ₽', isWin: false },
-            { reels: ['🍋', '🍒', '🍋'], delta: -1000, balance: 2500, text: '🍋 Опять кислые лимоны! -1 000 ₽', isWin: false },
-            { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 4500, balance: 7000, text: '🔥 ТРИ СЕМЁРКИ! +4 500 ₽! Вот это фарт!', isWin: true },
-            { reels: ['💔', '🍋', '🍒'], delta: -2000, balance: 5000, text: '💔 Драма накаляется! -2 000 ₽', isWin: false },
-            { reels: ['💎', '👑', '💎'], delta: -1000, balance: 4000, text: '💎 Мимо алмазов! -1 000 ₽', isWin: false },
-            { reels: ['👑', '👑', '👑'], delta: 4000, balance: 8000, text: '👑 ТРИ КОРОНЫ! +4 000 ₽! Королевский банк!', isWin: true },
-            { reels: ['🍋', '💣', '🍋'], delta: -2000, balance: 6000, text: '💣 Ловушка казино! -2 000 ₽', isWin: false },
-            { reels: ['🍒', '🍒', '🍋'], delta: -1000, balance: 5000, text: '🍒 Обидно, чуть-чуть не докрутило! -1 000 ₽', isWin: false },
-            { reels: ['💖', '💖', '💖'], delta: 3000, balance: 8000, text: '💖 ТРИ СЕРДЦА! +3 000 ₽! Любовь приносит доход!', isWin: true },
-            { reels: ['🍋', '🍒', '💎'], delta: -2000, balance: 6000, text: '😤 Казино совсем обнаглело! -2 000 ₽', isWin: false },
+            { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 4500, balance: 8000, text: '🔥 ТРИ СЕМЁРКИ! +4 500 ₽! Вот это фарт!', isWin: true },
+            { reels: ['💔', '🍋', '🍒'], delta: -3000, balance: 5000, text: '💔 Драма накаляется! -3 000 ₽', isWin: false },
+            { reels: ['👑', '👑', '👑'], delta: 4000, balance: 9000, text: '👑 ТРИ КОРОНЫ! +4 000 ₽! Королевский банк!', isWin: true },
+            { reels: ['🍋', '💣', '🍋'], delta: -3000, balance: 6000, text: '💣 Ловушка казино! -3 000 ₽', isWin: false },
             { reels: ['🌹', '🌹', '🌹'], delta: 2000, balance: 8000, text: '💐 ТРИ РОЗЫ! +2 000 ₽ И ВЫИГРАН ШИКАРНЫЙ БУКЕТ ЦВЕТОВ! 🌹', isWin: true, prize: 'flowers' },
-            { reels: ['💣', '💔', '🍋'], delta: -2000, balance: 6000, text: '😱 Ограбление среди бела дня! -2 000 ₽', isWin: false },
-            { reels: ['🍒', '💎', '🍒'], delta: -2000, balance: 4000, text: '📉 Баланс тает... Но мы не сдаемся! -2 000 ₽', isWin: false },
+            { reels: ['💣', '💔', '🍋'], delta: -4000, balance: 4000, text: '😱 Ограбление среди бела дня! -4 000 ₽', isWin: false },
             { reels: ['🍾', '🍾', '🍾'], delta: 5000, balance: 9000, text: '🍾 КАМБЭК ГОДА! +5 000 ₽! Открываем игристое!', isWin: true },
             { reels: ['🍋', '🍋', '👑'], delta: -2000, balance: 7000, text: '🎢 Снова американские горки! -2 000 ₽', isWin: false },
             { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 6000, balance: 13000, text: '🚀 СВЕРХУДАЧА! +6 000 ₽! Пахнет джекпотом!', isWin: true },
             { reels: ['💔', '💣', '🍋'], delta: -3000, balance: 10000, text: '💔 Казино делает подлянку! -3 000 ₽', isWin: false },
             { reels: ['👑', '👑', '👑'], delta: 4000, balance: 14000, text: '👑 КОРОЛЕВСКИЙ РЕВАНШ! +4 000 ₽!', isWin: true },
             { reels: ['💎', '🍋', '💎'], delta: -2000, balance: 12000, text: '😬 Опять не сошлось! -2 000 ₽', isWin: false },
-            { reels: ['🍒', '🍒', '🍒'], delta: 3000, balance: 15000, text: '🍒 ВИШНЕВЫЙ САЛЮТ! +3 000 ₽!', isWin: true },
-            { reels: ['🍋', '💔', '💣'], delta: -2000, balance: 13000, text: '😱 Нервы на пределе! -2 000 ₽... ОСТАЛСЯ СУПЕР-СПИН!', isWin: false },
-            { reels: ['💎', '💎', '💎'], delta: 7000, balance: 20000, text: '💥 ТРИ АЛМАЗА! МЕГА-ДЖЕКПОТ 20 000 ₽ + ЦВЕТЫ + СЛАДОСТИ! 🍾🎉', isWin: true, isJackpot: true }
+            { reels: ['🍒', '🍒', '🍒'], delta: 1000, balance: 13000, text: '🍒 ВИШНЕВЫЙ САЛЮТ! +1 000 ₽! Идем к финалу!', isWin: true },
+            { reels: ['💎', '💎', '💎'], delta: 7000, balance: 20000, text: '💥 ТРИ АЛМАЗА! МЕГА-ДЖЕКПОТ 20 000 ₽! 🍾🎉', isWin: true, isJackpot: true }
         ];
 
         let audioCtx = null;
@@ -712,10 +701,10 @@
                     claimBtn.classList.remove('hidden');
                 } else if (round.isWin) {
                     playSlotSound('win');
-                    msg.className = "mt-2.5 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl py-1.5 px-2.5 text-xs font-bold shadow min-h-[38px] flex items-center justify-center";
+                    msg.className = "mt-2.5 bg-emerald-100 border-2 border-emerald-400 text-emerald-900 rounded-xl py-1.5 px-2.5 text-xs font-black shadow min-h-[38px] flex items-center justify-center animate-bounce";
                     msg.innerHTML = round.text;
                     if (typeof confetti === 'function') {
-                        confetti({ particleCount: 25, spread: 40, origin: { y: 0.7 } });
+                        confetti({ particleCount: 60, spread: 70, origin: { y: 0.7 }, colors: ['#4ade80', '#fbbf24', '#f472b6'] });
                     }
                 } else {
                     playSlotSound('loss');
@@ -727,14 +716,8 @@
                 isSlotSpinning = false;
 
                 if (!round.isJackpot) {
-                    document.getElementById('slot-spins-left').innerText = (currentSlotRound + 1) + " / 30";
                     spinBtn.disabled = false;
                     spinBtn.classList.remove('opacity-60', 'cursor-not-allowed');
-                    if (currentSlotRound === 29) {
-                        spinBtn.innerHTML = '<i class="fa-solid fa-fire text-yellow-300 animate-pulse"></i> СУПЕР-СПИН! 🔥';
-                    }
-                } else {
-                    document.getElementById('slot-spins-left').innerText = "30 / 30 🏆";
                 }
             }, 750);
         }
