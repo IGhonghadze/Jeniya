@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Подключаем иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключаем конфетти -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
         body {
@@ -277,52 +279,70 @@
             </div>
         </div>
 
-        <!-- Слайд 5: Время распаковки (подарки) -->
-        <div id="slide-5" class="slide flex-col h-full flex-grow">
-            <h2 class="text-3xl cinematic-text mb-2 text-pink-600">Время распаковки</h2>
-            <p class="text-gray-600 mb-8 text-sm">Угадай, кто и что тебе приготовил? Нажимай на коробки!</p>
-            
-            <div class="grid grid-cols-1 gap-4 mb-6" id="gifts-container">
-                <div class="gift-box bg-white/70 border border-pink-200 rounded-2xl p-4 flex items-center justify-between shadow-sm" onclick="openGift(this, 'Мама переживает, чтобы тебе было тепло', 'Уютный кашемировый шарф!')">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 text-xl gift-icon">
-                            <i class="fa-solid fa-gift"></i>
-                        </div>
-                        <div class="text-left">
-                            <p class="font-semibold text-gray-800 text-sm hint-text">Подсказка 1</p>
-                            <p class="text-xs text-gray-500 mt-1">Нажми, чтобы открыть</p>
-                        </div>
+        <!-- Слайд 5: Казино "ЖЕНЮРУМ" - Праздничный слот-автомат -->
+        <div id="slide-5" class="slide flex-col h-full flex-grow justify-between text-center">
+            <div>
+                <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Розыгрыш подарка</span>
+                <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-1">Казино «ЖЕНЮРУМ»</h2>
+                <p class="text-gray-600 mb-3 text-xs md:text-sm">
+                    Не знаешь, что выбрать? Испытай удачу главной героини! Крути барабаны и выбивай свой подарок! 💖
+                </p>
+            </div>
+
+            <!-- Игровой автомат -->
+            <div class="bg-gradient-to-b from-pink-500 via-rose-400 to-pink-600 p-3.5 md:p-4 rounded-3xl shadow-xl border-4 border-yellow-200/90 relative overflow-hidden my-auto">
+                <!-- Декоративные неоновые огоньки -->
+                <div class="flex justify-between items-center px-1 mb-2">
+                    <span class="text-yellow-200 text-xs font-bold tracking-wider animate-pulse">✨ VEGAS SPECIAL ✨</span>
+                    <div class="flex gap-1.5 items-center">
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-300 animate-ping"></span>
+                        <span class="w-2 h-2 rounded-full bg-white"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-300"></span>
                     </div>
                 </div>
 
-                <div class="gift-box bg-white/70 border border-pink-200 rounded-2xl p-4 flex items-center justify-between shadow-sm" onclick="openGift(this, 'От сестры для твоих бьюти-ритуалов', 'Набор любимой косметики!')">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-500 text-xl gift-icon">
-                            <i class="fa-solid fa-gift"></i>
+                <!-- Табло баланса и раунда -->
+                <div class="bg-gray-900/90 rounded-2xl p-3 mb-3 border-2 border-yellow-300/60 shadow-inner flex justify-between items-center text-left">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-wider text-pink-300 font-semibold block">Баланс подарка</span>
+                        <div class="text-2xl md:text-3xl font-black text-yellow-300 font-mono tracking-wide" id="slot-balance">
+                            0 ₽
                         </div>
-                        <div class="text-left">
-                            <p class="font-semibold text-gray-800 text-sm hint-text">Подсказка 2</p>
-                            <p class="text-xs text-gray-500 mt-1">Нажми, чтобы открыть</p>
-                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold block">Спин</span>
+                        <span id="slot-spins-left" class="text-base font-bold text-pink-200 font-mono">1 / 5</span>
                     </div>
                 </div>
 
-                <div class="gift-box bg-white/70 border border-pink-200 rounded-2xl p-4 flex items-center justify-between shadow-sm border-pink-400" onclick="openGift(this, 'Сюрприз от главного героя', 'Романтический ужин и [название подарка]')">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-pink-500 text-white rounded-full flex items-center justify-center text-xl gift-icon">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                        <div class="text-left">
-                            <p class="font-semibold text-pink-600 text-sm hint-text">Главный сюрприз</p>
-                            <p class="text-xs text-pink-400 mt-1">Нажми, чтобы узнать</p>
-                        </div>
+                <!-- 3 барабана слотов -->
+                <div class="bg-white/95 rounded-2xl p-2.5 border-2 border-pink-200 shadow-inner flex justify-between items-center gap-2 relative h-28 overflow-hidden">
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-1">
+                        🎁
                     </div>
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-2">
+                        💎
+                    </div>
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-3">
+                        👑
+                    </div>
+                </div>
+
+                <!-- Сообщение о результате спина -->
+                <div id="slot-message" class="mt-3 bg-white/95 backdrop-blur-sm rounded-xl py-2 px-3 text-xs md:text-sm font-semibold text-gray-800 shadow min-h-[42px] flex items-center justify-center transition-all border border-pink-100">
+                    Нажимай «КРУТИТЬ!», чтобы забрать куш 🎲
                 </div>
             </div>
 
-            <button id="next-btn-5" onclick="nextSlide(6)" class="hidden w-full bg-pink-500 text-white rounded-full py-3 text-lg font-semibold shadow-md mt-auto">
-                К финалу ❤️
-            </button>
+            <!-- Кнопки управления -->
+            <div class="mt-3">
+                <button id="spin-btn" onclick="spinSlots()" class="w-full bg-gradient-to-r from-amber-400 via-pink-500 to-rose-500 text-white rounded-full py-3.5 text-lg font-black tracking-wide shadow-xl hover:shadow-pink-500/50 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rotate"></i> КРУТИТЬ! 🎰
+                </button>
+                <button id="claim-btn" onclick="claimReward()" class="hidden w-full bg-gradient-to-r from-emerald-400 to-green-600 text-white rounded-full py-3.5 text-lg font-black tracking-wide shadow-xl animate-bounce transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gift"></i> Забрать 20 000 ₽ 💳
+                </button>
+            </div>
         </div>
 
         <!-- Слайд 6: Финал и официальный контракт -->
@@ -339,7 +359,10 @@
 
             <div id="contract-section" class="bg-white/80 p-4 rounded-xl border-2 border-dashed border-pink-300 relative mt-auto">
                 <h3 class="font-bold text-pink-600 mb-1 text-sm uppercase tracking-widest">Официальный контракт</h3>
-                <p class="text-xs text-gray-600 mb-3">Настоящим подтверждается продление сериала "ЖЕНЮРУМ" на следующий сезон длиною в жизнь.</p>
+                <p class="text-xs text-gray-600 mb-2">Настоящим подтверждается продление сериала "ЖЕНЮРУМ" на следующий сезон длиною в жизнь.</p>
+                <div class="inline-block bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                    💰 Бонус по контракту: 20 000 ₽ на любые твои капризы!
+                </div>
                 <button id="sign-btn" onclick="signContract()" class="w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-lg py-2.5 font-semibold shadow hover:shadow-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-pen-nib"></i> Подписать не глядя
                 </button>
@@ -457,29 +480,250 @@
             }
         }
 
-        function openGift(element, hint, actualGift) {
-            if(element.classList.contains('opened')) return;
+        // === ЛОГИКА СЛОТ-АВТОМАТА (КАЗИНО "ЖЕНЮРУМ") ===
+        let currentSlotRound = 0;
+        let currentBalance = 0;
+        let isSlotSpinning = false;
 
-            element.classList.add('opened', 'bg-pink-50', 'border-pink-500');
-            element.classList.remove('bg-white/70');
-
-            const iconContainer = element.querySelector('.gift-icon');
-            iconContainer.innerHTML = '<i class="fa-solid fa-box-open"></i>';
-            iconContainer.classList.add('bg-pink-500', 'text-white');
-            iconContainer.classList.remove('bg-pink-100', 'text-pink-500');
-
-            const textContainer = element.querySelector('.text-left');
-            textContainer.innerHTML = `
-                <p class="font-bold text-pink-700 text-sm mb-1">${hint}</p>
-                <p class="text-sm text-gray-800 font-medium">${actualGift}</p>
-            `;
-
-            openedGiftsCount++;
-            if(openedGiftsCount === totalGifts) {
-                setTimeout(() => {
-                    document.getElementById('next-btn-5').classList.remove('hidden');
-                }, 500);
+        const slotRounds = [
+            {
+                reels: ['🍒', '🍒', '🍒'],
+                delta: 5000,
+                balance: 5000,
+                text: '🔥 БИНГО! +5 000 ₽! Начало положено, ты фартовая!',
+                isWin: true
+            },
+            {
+                reels: ['🎁', '🎁', '🎁'],
+                delta: 7000,
+                balance: 12000,
+                text: '🤑 КУШ РАСТЕТ! +7 000 ₽! Казино в панике от твоего фарта!',
+                isWin: true
+            },
+            {
+                reels: ['🍋', '💔', '🍒'],
+                delta: -4000,
+                balance: 8000,
+                text: '😱 ОЙ-ОЙ! -4 000 ₽! Драма накаляется! Казино пытается отыграться!',
+                isWin: false
+            },
+            {
+                reels: ['👑', '👑', '👑'],
+                delta: 6000,
+                balance: 14000,
+                text: '👑 КАМБЭК КОРОЛЕВЫ! +6 000 ₽! Главная героиня берет своё!',
+                isWin: true
+            },
+            {
+                reels: ['💎', '💎', '💎'],
+                delta: 6000,
+                balance: 20000,
+                text: '💥 МЕГА-ДЖЕКПОТ! +6 000 ₽! Итого: 20 000 ₽ на любые твои хотелки! 🍾🎉',
+                isWin: true,
+                isJackpot: true
             }
+        ];
+
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playSlotSound(type) {
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'spin') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(320, now);
+                    gain.gain.setValueAtTime(0.04, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'stop') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(587.33, now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+                    osc.start(now);
+                    osc.stop(now + 0.12);
+                } else if (type === 'win') {
+                    [523.25, 659.25, 783.99].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.frequency.setValueAtTime(f, now + i * 0.08);
+                        g.gain.setValueAtTime(0.08, now + i * 0.08);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.2);
+                        o.start(now + i * 0.08);
+                        o.stop(now + i * 0.08 + 0.2);
+                    });
+                } else if (type === 'loss') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(280, now);
+                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.25);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                    osc.start(now);
+                    osc.stop(now + 0.25);
+                } else if (type === 'jackpot') {
+                    [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => {
+                        const o = ctx.createOscillator();
+                        const g = ctx.createGain();
+                        o.connect(g);
+                        g.connect(ctx.destination);
+                        o.frequency.setValueAtTime(f, now + i * 0.1);
+                        g.gain.setValueAtTime(0.12, now + i * 0.1);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.35);
+                        o.start(now + i * 0.1);
+                        o.stop(now + i * 0.1 + 0.35);
+                    });
+                }
+            } catch(e) {}
+        }
+
+        function spinSlots() {
+            if (isSlotSpinning || currentSlotRound >= slotRounds.length) return;
+            isSlotSpinning = true;
+
+            const spinBtn = document.getElementById('spin-btn');
+            spinBtn.disabled = true;
+            spinBtn.classList.add('opacity-60', 'cursor-not-allowed');
+
+            const round = slotRounds[currentSlotRound];
+            const emojis = ['💎', '💖', '👑', '🎁', '🍾', '7️⃣', '🍒', '🌹', '💸', '✨'];
+
+            const r1 = document.getElementById('reel-1');
+            const r2 = document.getElementById('reel-2');
+            const r3 = document.getElementById('reel-3');
+            const msg = document.getElementById('slot-message');
+
+            msg.className = "mt-3 bg-white/95 rounded-xl py-2 px-3 text-xs md:text-sm font-semibold text-gray-700 shadow min-h-[42px] flex items-center justify-center transition-all animate-pulse";
+            msg.innerHTML = "🎰 Барабаны крутятся... Удача заряжается!";
+
+            let counter = 0;
+            const spinInterval = setInterval(() => {
+                if (counter % 2 === 0) playSlotSound('spin');
+                r1.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                r2.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                r3.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                counter++;
+            }, 70);
+
+            // Остановка барабана 1
+            setTimeout(() => {
+                r1.innerText = round.reels[0];
+                r1.classList.add('scale-110');
+                playSlotSound('stop');
+                setTimeout(() => r1.classList.remove('scale-110'), 200);
+            }, 700);
+
+            // Остановка барабана 2
+            setTimeout(() => {
+                r2.innerText = round.reels[1];
+                r2.classList.add('scale-110');
+                playSlotSound('stop');
+                setTimeout(() => r2.classList.remove('scale-110'), 200);
+            }, 1100);
+
+            // Остановка барабана 3 и подведение итогов
+            setTimeout(() => {
+                clearInterval(spinInterval);
+                r3.innerText = round.reels[2];
+                r3.classList.add('scale-110');
+                playSlotSound('stop');
+                setTimeout(() => r3.classList.remove('scale-110'), 200);
+
+                // Анимация баланса
+                animateBalance(round.balance);
+
+                if (round.isJackpot) {
+                    playSlotSound('jackpot');
+                    msg.className = "mt-3 bg-yellow-100 border-2 border-yellow-400 text-yellow-900 rounded-xl py-2 px-3 text-xs md:text-sm font-black shadow min-h-[42px] flex items-center justify-center animate-bounce";
+                    msg.innerHTML = round.text;
+
+                    // Конфетти фейерверк
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+                        setTimeout(() => confetti({ particleCount: 120, spread: 90, origin: { y: 0.5 } }), 300);
+                        setTimeout(() => confetti({ particleCount: 150, spread: 120, origin: { y: 0.4 } }), 600);
+                    }
+
+                    // Показываем кнопку "Забрать выигрыш"
+                    spinBtn.classList.add('hidden');
+                    const claimBtn = document.getElementById('claim-btn');
+                    claimBtn.classList.remove('hidden');
+                } else if (round.isWin) {
+                    playSlotSound('win');
+                    msg.className = "mt-3 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl py-2 px-3 text-xs md:text-sm font-bold shadow min-h-[42px] flex items-center justify-center";
+                    msg.innerHTML = round.text;
+                    
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 30, spread: 45, origin: { y: 0.7 } });
+                    }
+                } else {
+                    playSlotSound('loss');
+                    msg.className = "mt-3 bg-rose-50 border border-rose-300 text-rose-800 rounded-xl py-2 px-3 text-xs md:text-sm font-bold shadow min-h-[42px] flex items-center justify-center";
+                    msg.innerHTML = round.text;
+                }
+
+                currentSlotRound++;
+                isSlotSpinning = false;
+
+                if (!round.isJackpot) {
+                    document.getElementById('slot-spins-left').innerText = (currentSlotRound + 1) + " / 5";
+                    spinBtn.disabled = false;
+                    spinBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                    if (currentSlotRound === 4) {
+                        spinBtn.innerHTML = '<i class="fa-solid fa-fire text-yellow-300 animate-pulse"></i> СУПЕР-СПИН! 🔥';
+                    }
+                } else {
+                    document.getElementById('slot-spins-left').innerText = "ФИНИШ 🏆";
+                }
+            }, 1500);
+        }
+
+        function animateBalance(targetBalance) {
+            const balanceEl = document.getElementById('slot-balance');
+            const startBalance = currentBalance;
+            const duration = 600;
+            const startTime = performance.now();
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.round(startBalance + (targetBalance - startBalance) * progress);
+                balanceEl.innerText = current.toLocaleString('ru-RU') + " ₽";
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    currentBalance = targetBalance;
+                    balanceEl.innerText = targetBalance.toLocaleString('ru-RU') + " ₽";
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        function claimReward() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 } });
+            }
+            setTimeout(() => {
+                nextSlide(6);
+            }, 600);
         }
 
         function initMemoryGame() {
