@@ -282,89 +282,114 @@
         <!-- Слайд 5: Казино "ЖЕНЮРУМ" - Праздничный слот-автомат -->
         <div id="slide-5" class="slide flex-col h-full flex-grow justify-between text-center">
             <div>
-                <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Розыгрыш подарка</span>
-                <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-1">Казино «ЖЕНЮРУМ»</h2>
-                <p class="text-gray-600 mb-3 text-xs md:text-sm">
-                    Не знаешь, что выбрать? Испытай удачу главной героини! Крути барабаны и выбивай свой подарок! 💖
+                <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Розыгрыш подарков</span>
+                <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-0.5">Казино «ЖЕНЮРУМ»</h2>
+                <p class="text-gray-600 mb-2 text-xs">
+                    Испытай удачу главной героини! Крути слоты и выбивай подарки! 💖
                 </p>
             </div>
 
+            <!-- Инвентарь выигранных призов (Цветы, Сладости, Деньги) -->
+            <div class="grid grid-cols-3 gap-2 mb-2">
+                <div id="prize-flowers" class="bg-white/50 border border-dashed border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all opacity-40">
+                    <span class="text-xl">💐</span>
+                    <span class="text-[10px] font-bold text-gray-500 prize-title">Цветы</span>
+                    <span class="text-[8px] text-gray-400 font-medium prize-sub">заблокировано</span>
+                </div>
+                <div id="prize-sweets" class="bg-white/50 border border-dashed border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all opacity-40">
+                    <span class="text-xl">🍫</span>
+                    <span class="text-[10px] font-bold text-gray-500 prize-title">Сладости</span>
+                    <span class="text-[8px] text-gray-400 font-medium prize-sub">заблокировано</span>
+                </div>
+                <div id="prize-money" class="bg-white/90 border border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all">
+                    <span class="text-xl">💳</span>
+                    <span class="text-[10px] font-bold text-pink-600">Куш</span>
+                    <span id="prize-money-status" class="text-[10px] font-extrabold text-pink-500">0 ₽</span>
+                </div>
+            </div>
+
             <!-- Игровой автомат -->
-            <div class="bg-gradient-to-b from-pink-500 via-rose-400 to-pink-600 p-3.5 md:p-4 rounded-3xl shadow-xl border-4 border-yellow-200/90 relative overflow-hidden my-auto">
+            <div class="bg-gradient-to-b from-pink-500 via-rose-400 to-pink-600 p-3 rounded-2xl shadow-xl border-4 border-yellow-200/90 relative overflow-hidden my-auto">
                 <!-- Декоративные неоновые огоньки -->
-                <div class="flex justify-between items-center px-1 mb-2">
-                    <span class="text-yellow-200 text-xs font-bold tracking-wider animate-pulse">✨ VEGAS SPECIAL ✨</span>
-                    <div class="flex gap-1.5 items-center">
-                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-300 animate-ping"></span>
-                        <span class="w-2 h-2 rounded-full bg-white"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-300"></span>
+                <div class="flex justify-between items-center px-1 mb-1.5">
+                    <span class="text-yellow-200 text-[11px] font-bold tracking-wider animate-pulse">✨ VEGAS SPECIAL ✨</span>
+                    <div class="flex gap-1 items-center">
+                        <span class="w-2 h-2 rounded-full bg-yellow-300 animate-ping"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                        <span class="w-2 h-2 rounded-full bg-yellow-300"></span>
                     </div>
                 </div>
 
                 <!-- Табло баланса и раунда -->
-                <div class="bg-gray-900/90 rounded-2xl p-3 mb-3 border-2 border-yellow-300/60 shadow-inner flex justify-between items-center text-left">
+                <div class="bg-gray-900/90 rounded-xl p-2.5 mb-2.5 border-2 border-yellow-300/60 shadow-inner flex justify-between items-center text-left">
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider text-pink-300 font-semibold block">Баланс подарка</span>
-                        <div class="text-2xl md:text-3xl font-black text-yellow-300 font-mono tracking-wide" id="slot-balance">
+                        <span class="text-[9px] uppercase tracking-wider text-pink-300 font-semibold block">Баланс подарка</span>
+                        <div class="text-2xl font-black text-yellow-300 font-mono tracking-wide" id="slot-balance">
                             0 ₽
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-[10px] uppercase tracking-wider text-gray-400 font-semibold block">Спин</span>
-                        <span id="slot-spins-left" class="text-base font-bold text-pink-200 font-mono">1 / 5</span>
+                        <span class="text-[9px] uppercase tracking-wider text-gray-400 font-semibold block">Спин</span>
+                        <span id="slot-spins-left" class="text-sm font-bold text-pink-200 font-mono">1 / 30</span>
                     </div>
                 </div>
 
                 <!-- 3 барабана слотов -->
-                <div class="bg-white/95 rounded-2xl p-2.5 border-2 border-pink-200 shadow-inner flex justify-between items-center gap-2 relative h-28 overflow-hidden">
-                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-1">
+                <div class="bg-white/95 rounded-xl p-2 border-2 border-pink-200 shadow-inner flex justify-between items-center gap-1.5 relative h-24 overflow-hidden">
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-lg border border-pink-200 flex items-center justify-center text-3xl md:text-4xl shadow-sm transition-all duration-200" id="reel-1">
                         🎁
                     </div>
-                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-2">
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-lg border border-pink-200 flex items-center justify-center text-3xl md:text-4xl shadow-sm transition-all duration-200" id="reel-2">
                         💎
                     </div>
-                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-xl border border-pink-200 flex items-center justify-center text-4xl md:text-5xl shadow-sm transition-all duration-300" id="reel-3">
+                    <div class="slot-reel flex-1 h-full bg-gradient-to-b from-pink-50 via-white to-pink-50 rounded-lg border border-pink-200 flex items-center justify-center text-3xl md:text-4xl shadow-sm transition-all duration-200" id="reel-3">
                         👑
                     </div>
                 </div>
 
                 <!-- Сообщение о результате спина -->
-                <div id="slot-message" class="mt-3 bg-white/95 backdrop-blur-sm rounded-xl py-2 px-3 text-xs md:text-sm font-semibold text-gray-800 shadow min-h-[42px] flex items-center justify-center transition-all border border-pink-100">
-                    Нажимай «КРУТИТЬ!», чтобы забрать куш 🎲
+                <div id="slot-message" class="mt-2.5 bg-white/95 backdrop-blur-sm rounded-xl py-1.5 px-2.5 text-xs font-semibold text-gray-800 shadow min-h-[38px] flex items-center justify-center transition-all border border-pink-100">
+                    Только 3 одинаковых символа дают куш! Жми «КРУТИТЬ» 🎲
                 </div>
             </div>
 
             <!-- Кнопки управления -->
-            <div class="mt-3">
-                <button id="spin-btn" onclick="spinSlots()" class="w-full bg-gradient-to-r from-amber-400 via-pink-500 to-rose-500 text-white rounded-full py-3.5 text-lg font-black tracking-wide shadow-xl hover:shadow-pink-500/50 active:scale-95 transition-all flex items-center justify-center gap-2">
+            <div class="mt-2.5">
+                <button id="spin-btn" onclick="spinSlots()" class="w-full bg-gradient-to-r from-amber-400 via-pink-500 to-rose-500 text-white rounded-full py-3 text-base font-black tracking-wide shadow-xl hover:shadow-pink-500/50 active:scale-95 transition-all flex items-center justify-center gap-2">
                     <i class="fa-solid fa-rotate"></i> КРУТИТЬ! 🎰
                 </button>
-                <button id="claim-btn" onclick="claimReward()" class="hidden w-full bg-gradient-to-r from-emerald-400 to-green-600 text-white rounded-full py-3.5 text-lg font-black tracking-wide shadow-xl animate-bounce transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-gift"></i> Забрать 20 000 ₽ 💳
+                <button id="claim-btn" onclick="claimReward()" class="hidden w-full bg-gradient-to-r from-emerald-400 to-green-600 text-white rounded-full py-3 text-base font-black tracking-wide shadow-xl animate-bounce transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gift"></i> Забрать все подарки! 🎁
                 </button>
             </div>
         </div>
 
         <!-- Слайд 6: Финал и официальный контракт -->
         <div id="slide-6" class="slide flex-col h-full justify-center flex-grow text-center">
-            <div class="w-40 h-40 mx-auto rounded-2xl overflow-hidden shadow-lg mb-4 transform -rotate-3 border-4 border-white mt-2 ring-4 ring-pink-200/50">
+            <div class="w-36 h-36 mx-auto rounded-2xl overflow-hidden shadow-lg mb-3 transform -rotate-3 border-4 border-white mt-1 ring-4 ring-pink-200/50">
                 <img src="images/final.jpg" onerror="this.src='https://placehold.co/400x400/ffb6c1/ffffff?text=Самое+теплое+селфи'" alt="Наше селфи" class="w-full h-full object-cover">
             </div>
 
-            <h2 class="text-3xl cinematic-text text-pink-600 mb-3">С днем рождения!</h2>
+            <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-2">С днем рождения!</h2>
             
-            <p class="text-gray-700 leading-relaxed mb-4 italic text-sm md:text-base">
+            <p class="text-gray-700 leading-relaxed mb-3 italic text-xs md:text-sm">
                 "За эти 18 месяцев мы стали друг для друга настоящим домом. И хотя у нас еще не было 45-й серии с амнезией, зато у нас есть главное — наш собственный сценарий. И я готов создавать каждую его страницу вместе с тобой."
             </p>
 
-            <div id="contract-section" class="bg-white/80 p-4 rounded-xl border-2 border-dashed border-pink-300 relative mt-auto">
-                <h3 class="font-bold text-pink-600 mb-1 text-sm uppercase tracking-widest">Официальный контракт</h3>
-                <p class="text-xs text-gray-600 mb-2">Настоящим подтверждается продление сериала "ЖЕНЮРУМ" на следующий сезон длиною в жизнь.</p>
-                <div class="inline-block bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
-                    💰 Бонус по контракту: 20 000 ₽ на любые твои капризы!
+            <div id="contract-section" class="bg-white/85 p-3.5 rounded-xl border-2 border-dashed border-pink-300 relative mt-auto">
+                <h3 class="font-bold text-pink-600 mb-1 text-xs uppercase tracking-widest">Официальный контракт</h3>
+                <p class="text-[11px] text-gray-600 mb-2">Настоящим подтверждается продление сериала "ЖЕНЮРУМ" на следующий сезон длиною в жизнь.</p>
+                
+                <!-- Пакет подарков -->
+                <div class="bg-pink-50 border border-pink-200 text-pink-900 p-2.5 rounded-xl text-xs font-semibold mb-3 text-left space-y-1 shadow-sm">
+                    <div class="font-bold text-pink-700 text-center text-[11px] mb-1">🎁 Твой выигранный подарочный набор:</div>
+                    <div class="flex items-center gap-2"><span class="text-base">💐</span> Шикарный букет цветов</div>
+                    <div class="flex items-center gap-2"><span class="text-base">🍫</span> Коробка любимых сладостей</div>
+                    <div class="flex items-center gap-2"><span class="text-base">💳</span> <strong class="text-pink-600">20 000 ₽</strong> на любые твои капризы</div>
                 </div>
+
                 <button id="sign-btn" onclick="signContract()" class="w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-lg py-2.5 font-semibold shadow hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-pen-nib"></i> Подписать не глядя
+                    <i class="fa-solid fa-pen-nib"></i> Подписать не глядя ❤️
                 </button>
                 <div id="contract-signed" class="hidden text-pink-500 font-bold text-lg rotate-[-5deg] cinematic-text py-2">
                     Утверждено главным героем! ❤️
@@ -486,42 +511,36 @@
         let isSlotSpinning = false;
 
         const slotRounds = [
-            {
-                reels: ['🍒', '🍒', '🍒'],
-                delta: 5000,
-                balance: 5000,
-                text: '🔥 БИНГО! +5 000 ₽! Начало положено, ты фартовая!',
-                isWin: true
-            },
-            {
-                reels: ['🎁', '🎁', '🎁'],
-                delta: 7000,
-                balance: 12000,
-                text: '🤑 КУШ РАСТЕТ! +7 000 ₽! Казино в панике от твоего фарта!',
-                isWin: true
-            },
-            {
-                reels: ['🍋', '💔', '🍒'],
-                delta: -4000,
-                balance: 8000,
-                text: '😱 ОЙ-ОЙ! -4 000 ₽! Драма накаляется! Казино пытается отыграться!',
-                isWin: false
-            },
-            {
-                reels: ['👑', '👑', '👑'],
-                delta: 6000,
-                balance: 14000,
-                text: '👑 КАМБЭК КОРОЛЕВЫ! +6 000 ₽! Главная героиня берет своё!',
-                isWin: true
-            },
-            {
-                reels: ['💎', '💎', '💎'],
-                delta: 6000,
-                balance: 20000,
-                text: '💥 МЕГА-ДЖЕКПОТ! +6 000 ₽! Итого: 20 000 ₽ на любые твои хотелки! 🍾🎉',
-                isWin: true,
-                isJackpot: true
-            }
+            { reels: ['🍋', '🍒', '💎'], delta: 0, balance: 0, text: '😅 Разминка! Символы разные — крути дальше!', isWin: false },
+            { reels: ['🍒', '🍒', '🍒'], delta: 1500, balance: 1500, text: '🍒 ТРИ ВИШНИ! +1 500 ₽! Первый куш пошёл!', isWin: true },
+            { reels: ['👑', '🍋', '💎'], delta: -500, balance: 1000, text: '😜 Не совпало! Казино забирает 500 ₽', isWin: false },
+            { reels: ['🍒', '🍒', '🍒'], delta: 2000, balance: 3000, text: '🍒 СНОВА ВИШЕНКИ! +2 000 ₽! Баланс растет!', isWin: true },
+            { reels: ['💎', '💎', '🍋'], delta: -1000, balance: 2000, text: '😬 Эх, почти выпал алмаз... -1 000 ₽', isWin: false },
+            { reels: ['🍾', '🍾', '🍾'], delta: 3000, balance: 5000, text: '🍾 ТРИ ШАМПАНСКИХ! +3 000 ₽! Праздник продолжается!', isWin: true },
+            { reels: ['🍋', '💣', '🍒'], delta: -1500, balance: 3500, text: '💣 Казино сопротивляется! -1 500 ₽', isWin: false },
+            { reels: ['🍫', '🍫', '🍫'], delta: 1500, balance: 5000, text: '🍬 ТРИ ШОКОЛАДА! +1 500 ₽ И ВЫИГРАНА КОРОБКА КОНФЕТ! 🍫', isWin: true, prize: 'sweets' },
+            { reels: ['👑', '💎', '👑'], delta: -1500, balance: 3500, text: '👑 Корона мимо! -1 500 ₽', isWin: false },
+            { reels: ['🍋', '🍒', '🍋'], delta: -1000, balance: 2500, text: '🍋 Опять кислые лимоны! -1 000 ₽', isWin: false },
+            { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 4500, balance: 7000, text: '🔥 ТРИ СЕМЁРКИ! +4 500 ₽! Вот это фарт!', isWin: true },
+            { reels: ['💔', '🍋', '🍒'], delta: -2000, balance: 5000, text: '💔 Драма накаляется! -2 000 ₽', isWin: false },
+            { reels: ['💎', '👑', '💎'], delta: -1000, balance: 4000, text: '💎 Мимо алмазов! -1 000 ₽', isWin: false },
+            { reels: ['👑', '👑', '👑'], delta: 4000, balance: 8000, text: '👑 ТРИ КОРОНЫ! +4 000 ₽! Королевский банк!', isWin: true },
+            { reels: ['🍋', '💣', '🍋'], delta: -2000, balance: 6000, text: '💣 Ловушка казино! -2 000 ₽', isWin: false },
+            { reels: ['🍒', '🍒', '🍋'], delta: -1000, balance: 5000, text: '🍒 Обидно, чуть-чуть не докрутило! -1 000 ₽', isWin: false },
+            { reels: ['💖', '💖', '💖'], delta: 3000, balance: 8000, text: '💖 ТРИ СЕРДЦА! +3 000 ₽! Любовь приносит доход!', isWin: true },
+            { reels: ['🍋', '🍒', '💎'], delta: -2000, balance: 6000, text: '😤 Казино совсем обнаглело! -2 000 ₽', isWin: false },
+            { reels: ['🌹', '🌹', '🌹'], delta: 2000, balance: 8000, text: '💐 ТРИ РОЗЫ! +2 000 ₽ И ВЫИГРАН ШИКАРНЫЙ БУКЕТ ЦВЕТОВ! 🌹', isWin: true, prize: 'flowers' },
+            { reels: ['💣', '💔', '🍋'], delta: -2000, balance: 6000, text: '😱 Ограбление среди бела дня! -2 000 ₽', isWin: false },
+            { reels: ['🍒', '💎', '🍒'], delta: -2000, balance: 4000, text: '📉 Баланс тает... Но мы не сдаемся! -2 000 ₽', isWin: false },
+            { reels: ['🍾', '🍾', '🍾'], delta: 5000, balance: 9000, text: '🍾 КАМБЭК ГОДА! +5 000 ₽! Открываем игристое!', isWin: true },
+            { reels: ['🍋', '🍋', '👑'], delta: -2000, balance: 7000, text: '🎢 Снова американские горки! -2 000 ₽', isWin: false },
+            { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 6000, balance: 13000, text: '🚀 СВЕРХУДАЧА! +6 000 ₽! Пахнет джекпотом!', isWin: true },
+            { reels: ['💔', '💣', '🍋'], delta: -3000, balance: 10000, text: '💔 Казино делает подлянку! -3 000 ₽', isWin: false },
+            { reels: ['👑', '👑', '👑'], delta: 4000, balance: 14000, text: '👑 КОРОЛЕВСКИЙ РЕВАНШ! +4 000 ₽!', isWin: true },
+            { reels: ['💎', '🍋', '💎'], delta: -2000, balance: 12000, text: '😬 Опять не сошлось! -2 000 ₽', isWin: false },
+            { reels: ['🍒', '🍒', '🍒'], delta: 3000, balance: 15000, text: '🍒 ВИШНЕВЫЙ САЛЮТ! +3 000 ₽!', isWin: true },
+            { reels: ['🍋', '💔', '💣'], delta: -2000, balance: 13000, text: '😱 Нервы на пределе! -2 000 ₽... ОСТАЛСЯ СУПЕР-СПИН!', isWin: false },
+            { reels: ['💎', '💎', '💎'], delta: 7000, balance: 20000, text: '💥 ТРИ АЛМАЗА! МЕГА-ДЖЕКПОТ 20 000 ₽ + ЦВЕТЫ + СЛАДОСТИ! 🍾🎉', isWin: true, isJackpot: true }
         ];
 
         let audioCtx = null;
@@ -549,50 +568,76 @@
                     osc.type = 'triangle';
                     osc.frequency.setValueAtTime(320, now);
                     gain.gain.setValueAtTime(0.04, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
                     osc.start(now);
-                    osc.stop(now + 0.05);
+                    osc.stop(now + 0.04);
                 } else if (type === 'stop') {
                     osc.type = 'sine';
                     osc.frequency.setValueAtTime(587.33, now);
                     gain.gain.setValueAtTime(0.08, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
                     osc.start(now);
-                    osc.stop(now + 0.12);
+                    osc.stop(now + 0.08);
                 } else if (type === 'win') {
                     [523.25, 659.25, 783.99].forEach((f, i) => {
                         const o = ctx.createOscillator();
                         const g = ctx.createGain();
                         o.connect(g);
                         g.connect(ctx.destination);
-                        o.frequency.setValueAtTime(f, now + i * 0.08);
-                        g.gain.setValueAtTime(0.08, now + i * 0.08);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.2);
-                        o.start(now + i * 0.08);
-                        o.stop(now + i * 0.08 + 0.2);
+                        o.frequency.setValueAtTime(f, now + i * 0.07);
+                        g.gain.setValueAtTime(0.08, now + i * 0.07);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.15);
+                        o.start(now + i * 0.07);
+                        o.stop(now + i * 0.07 + 0.15);
                     });
                 } else if (type === 'loss') {
                     osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(280, now);
-                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.25);
-                    gain.gain.setValueAtTime(0.08, now);
-                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                    osc.frequency.setValueAtTime(260, now);
+                    osc.frequency.exponentialRampToValueAtTime(130, now + 0.2);
+                    gain.gain.setValueAtTime(0.07, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
                     osc.start(now);
-                    osc.stop(now + 0.25);
+                    osc.stop(now + 0.2);
                 } else if (type === 'jackpot') {
                     [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((f, i) => {
                         const o = ctx.createOscillator();
                         const g = ctx.createGain();
                         o.connect(g);
                         g.connect(ctx.destination);
-                        o.frequency.setValueAtTime(f, now + i * 0.1);
-                        g.gain.setValueAtTime(0.12, now + i * 0.1);
-                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.35);
-                        o.start(now + i * 0.1);
-                        o.stop(now + i * 0.1 + 0.35);
+                        o.frequency.setValueAtTime(f, now + i * 0.09);
+                        g.gain.setValueAtTime(0.12, now + i * 0.09);
+                        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.09 + 0.3);
+                        o.start(now + i * 0.09);
+                        o.stop(now + i * 0.09 + 0.3);
                     });
                 }
             } catch(e) {}
+        }
+
+        function unlockPrize(type) {
+            if (type === 'sweets') {
+                const el = document.getElementById('prize-sweets');
+                el.classList.remove('opacity-40', 'border-dashed');
+                el.classList.add('bg-amber-100', 'border-amber-400', 'border-2', 'shadow-md', 'scale-105');
+                el.querySelector('.prize-title').innerText = 'Конфеты 🍬';
+                el.querySelector('.prize-title').classList.replace('text-gray-500', 'text-amber-800');
+                el.querySelector('.prize-sub').innerText = 'ВЫИГРАНО! ❤️';
+                el.querySelector('.prize-sub').classList.replace('text-gray-400', 'text-amber-600');
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 }, colors: ['#d4a373', '#ffccd5', '#faedcd'] });
+                }
+            } else if (type === 'flowers') {
+                const el = document.getElementById('prize-flowers');
+                el.classList.remove('opacity-40', 'border-dashed');
+                el.classList.add('bg-pink-100', 'border-pink-400', 'border-2', 'shadow-md', 'scale-105');
+                el.querySelector('.prize-title').innerText = 'Букет 💐';
+                el.querySelector('.prize-title').classList.replace('text-gray-500', 'text-pink-800');
+                el.querySelector('.prize-sub').innerText = 'ВЫИГРАНО! ❤️';
+                el.querySelector('.prize-sub').classList.replace('text-gray-400', 'text-pink-600');
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 50, spread: 70, origin: { y: 0.7 }, colors: ['#ff4d6d', '#ff758f', '#ffccd5'] });
+                }
+            }
         }
 
         function spinSlots() {
@@ -604,15 +649,15 @@
             spinBtn.classList.add('opacity-60', 'cursor-not-allowed');
 
             const round = slotRounds[currentSlotRound];
-            const emojis = ['💎', '💖', '👑', '🎁', '🍾', '7️⃣', '🍒', '🌹', '💸', '✨'];
+            const emojis = ['💎', '💖', '👑', '🎁', '🍾', '7️⃣', '🍒', '🌹', '🍫', '🍋', '💣'];
 
             const r1 = document.getElementById('reel-1');
             const r2 = document.getElementById('reel-2');
             const r3 = document.getElementById('reel-3');
             const msg = document.getElementById('slot-message');
 
-            msg.className = "mt-3 bg-white/95 rounded-xl py-2 px-3 text-xs md:text-sm font-semibold text-gray-700 shadow min-h-[42px] flex items-center justify-center transition-all animate-pulse";
-            msg.innerHTML = "🎰 Барабаны крутятся... Удача заряжается!";
+            msg.className = "mt-2.5 bg-white/95 rounded-xl py-1.5 px-2.5 text-xs font-semibold text-gray-700 shadow min-h-[38px] flex items-center justify-center transition-all animate-pulse border border-pink-100";
+            msg.innerHTML = "🎰 Барабаны крутятся... Испытываем судьбу!";
 
             let counter = 0;
             const spinInterval = setInterval(() => {
@@ -621,62 +666,60 @@
                 r2.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                 r3.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                 counter++;
-            }, 70);
+            }, 60);
 
-            // Остановка барабана 1
+            // Быстрый динамичный стоп барабанов
             setTimeout(() => {
                 r1.innerText = round.reels[0];
                 r1.classList.add('scale-110');
                 playSlotSound('stop');
-                setTimeout(() => r1.classList.remove('scale-110'), 200);
-            }, 700);
+                setTimeout(() => r1.classList.remove('scale-110'), 150);
+            }, 300);
 
-            // Остановка барабана 2
             setTimeout(() => {
                 r2.innerText = round.reels[1];
                 r2.classList.add('scale-110');
                 playSlotSound('stop');
-                setTimeout(() => r2.classList.remove('scale-110'), 200);
-            }, 1100);
+                setTimeout(() => r2.classList.remove('scale-110'), 150);
+            }, 500);
 
-            // Остановка барабана 3 и подведение итогов
             setTimeout(() => {
                 clearInterval(spinInterval);
                 r3.innerText = round.reels[2];
                 r3.classList.add('scale-110');
                 playSlotSound('stop');
-                setTimeout(() => r3.classList.remove('scale-110'), 200);
+                setTimeout(() => r3.classList.remove('scale-110'), 150);
 
-                // Анимация баланса
                 animateBalance(round.balance);
+
+                if (round.prize) {
+                    unlockPrize(round.prize);
+                }
 
                 if (round.isJackpot) {
                     playSlotSound('jackpot');
-                    msg.className = "mt-3 bg-yellow-100 border-2 border-yellow-400 text-yellow-900 rounded-xl py-2 px-3 text-xs md:text-sm font-black shadow min-h-[42px] flex items-center justify-center animate-bounce";
+                    msg.className = "mt-2.5 bg-yellow-100 border-2 border-yellow-400 text-yellow-900 rounded-xl py-1.5 px-2.5 text-xs font-black shadow min-h-[38px] flex items-center justify-center animate-bounce";
                     msg.innerHTML = round.text;
 
-                    // Конфетти фейерверк
                     if (typeof confetti === 'function') {
-                        confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
-                        setTimeout(() => confetti({ particleCount: 120, spread: 90, origin: { y: 0.5 } }), 300);
-                        setTimeout(() => confetti({ particleCount: 150, spread: 120, origin: { y: 0.4 } }), 600);
+                        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                        setTimeout(() => confetti({ particleCount: 140, spread: 100, origin: { y: 0.5 } }), 300);
+                        setTimeout(() => confetti({ particleCount: 160, spread: 120, origin: { y: 0.4 } }), 600);
                     }
 
-                    // Показываем кнопку "Забрать выигрыш"
                     spinBtn.classList.add('hidden');
                     const claimBtn = document.getElementById('claim-btn');
                     claimBtn.classList.remove('hidden');
                 } else if (round.isWin) {
                     playSlotSound('win');
-                    msg.className = "mt-3 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl py-2 px-3 text-xs md:text-sm font-bold shadow min-h-[42px] flex items-center justify-center";
+                    msg.className = "mt-2.5 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl py-1.5 px-2.5 text-xs font-bold shadow min-h-[38px] flex items-center justify-center";
                     msg.innerHTML = round.text;
-                    
                     if (typeof confetti === 'function') {
-                        confetti({ particleCount: 30, spread: 45, origin: { y: 0.7 } });
+                        confetti({ particleCount: 25, spread: 40, origin: { y: 0.7 } });
                     }
                 } else {
                     playSlotSound('loss');
-                    msg.className = "mt-3 bg-rose-50 border border-rose-300 text-rose-800 rounded-xl py-2 px-3 text-xs md:text-sm font-bold shadow min-h-[42px] flex items-center justify-center";
+                    msg.className = "mt-2.5 bg-rose-50 border border-rose-300 text-rose-800 rounded-xl py-1.5 px-2.5 text-xs font-bold shadow min-h-[38px] flex items-center justify-center";
                     msg.innerHTML = round.text;
                 }
 
@@ -684,22 +727,23 @@
                 isSlotSpinning = false;
 
                 if (!round.isJackpot) {
-                    document.getElementById('slot-spins-left').innerText = (currentSlotRound + 1) + " / 5";
+                    document.getElementById('slot-spins-left').innerText = (currentSlotRound + 1) + " / 30";
                     spinBtn.disabled = false;
                     spinBtn.classList.remove('opacity-60', 'cursor-not-allowed');
-                    if (currentSlotRound === 4) {
+                    if (currentSlotRound === 29) {
                         spinBtn.innerHTML = '<i class="fa-solid fa-fire text-yellow-300 animate-pulse"></i> СУПЕР-СПИН! 🔥';
                     }
                 } else {
-                    document.getElementById('slot-spins-left').innerText = "ФИНИШ 🏆";
+                    document.getElementById('slot-spins-left').innerText = "30 / 30 🏆";
                 }
-            }, 1500);
+            }, 750);
         }
 
         function animateBalance(targetBalance) {
             const balanceEl = document.getElementById('slot-balance');
+            const statusEl = document.getElementById('prize-money-status');
             const startBalance = currentBalance;
-            const duration = 600;
+            const duration = 400;
             const startTime = performance.now();
 
             function update(now) {
@@ -707,11 +751,13 @@
                 const progress = Math.min(elapsed / duration, 1);
                 const current = Math.round(startBalance + (targetBalance - startBalance) * progress);
                 balanceEl.innerText = current.toLocaleString('ru-RU') + " ₽";
+                if (statusEl) statusEl.innerText = current.toLocaleString('ru-RU') + " ₽";
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
                     currentBalance = targetBalance;
                     balanceEl.innerText = targetBalance.toLocaleString('ru-RU') + " ₽";
+                    if (statusEl) statusEl.innerText = targetBalance.toLocaleString('ru-RU') + " ₽";
                 }
             }
             requestAnimationFrame(update);
@@ -723,7 +769,7 @@
             }
             setTimeout(() => {
                 nextSlide(6);
-            }, 600);
+            }, 500);
         }
 
         function initMemoryGame() {
