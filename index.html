@@ -302,7 +302,7 @@
                 <p class="text-gray-600 mb-6 text-sm italic">И все они собрались здесь, чтобы сказать тебе кое-что важное. Нажимай на плей!</p>
                 
                 <div id="video-container" class="bg-black rounded-3xl overflow-hidden shadow-2xl shadow-pink-300/50 aspect-video relative flex items-center justify-center mb-6 w-full border-4 border-pink-100">
-                    <video controls playsinline class="w-full h-full bg-black">
+                    <video id="family-video" preload="auto" controls playsinline class="w-full h-full bg-black">
                         <source src="0925.mp4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
                     </video>
@@ -886,6 +886,11 @@
         function initMemoryGame() {
             const board = document.getElementById('memory-board');
             board.innerHTML = ''; 
+
+            // Начинаем прогружать видео в фоне
+            const video = document.getElementById('family-video');
+            if (video) video.load();
+
             let cardsArray = [...familyData, ...familyData];
             cardsArray.sort(() => 0.5 - Math.random());
 
