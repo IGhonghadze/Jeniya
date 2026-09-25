@@ -14,11 +14,16 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
+        html, body {
+            height: 100%;
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #ffe4e1 0%, #ffb6c1 100%);
-            overflow-x: hidden;
-            min-height: 100vh;
         }
         
         h1, h2, h3, .cinematic-text {
@@ -165,11 +170,11 @@
         }
     </style>
 </head>
-<body class="text-gray-800 flex items-center justify-center py-10 px-4">
+<body class="text-gray-800 flex items-center justify-center p-3 sm:p-4">
     
     <div id="hearts-container" class="fixed inset-0 pointer-events-none"></div>
 
-    <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 text-center min-h-[500px] flex flex-col relative overflow-hidden">
+    <div class="glass-card w-full max-w-md rounded-3xl p-5 md:p-6 text-center h-full max-h-[900px] flex flex-col relative overflow-hidden">
         
         <!-- Слайд 1: Искреннее послание и комплименты -->
         <div id="slide-1" class="slide active flex-col h-full flex-grow mt-1 justify-between">
@@ -179,7 +184,7 @@
             
             <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 font-semibold mb-2">Ну что, привет, родная ❤️</h2>
             
-            <div class="custom-scroll text-gray-700 text-sm md:text-base leading-relaxed space-y-3 mb-4 max-h-[40vh] overflow-y-auto pr-2 text-left bg-white/50 p-4 md:p-5 rounded-2xl border border-pink-200/60 shadow-inner">
+            <div class="custom-scroll text-gray-700 text-sm md:text-base leading-relaxed space-y-3 mb-4 flex-grow min-h-0 overflow-y-auto pr-2 text-left bg-white/50 p-4 md:p-5 rounded-2xl border border-pink-200/60 shadow-inner">
                 <p>
                     Знаешь, все последующие слова будут сказаны вовсе не из-за какого-то праздника. Этим словам не нужна причина — мне просто хочется напоминать тебе каждый день, что <span class="text-pink-600 font-semibold">ты — особенная</span>.
                 </p>
@@ -213,7 +218,7 @@
             <h2 class="text-2xl cinematic-text text-pink-600 mb-2 mt-2">5 Важных Вопросов</h2>
             <p class="text-gray-600 text-xs mb-4">Нам нужно сверить наши планы на будущее!</p>
             
-            <div class="custom-scroll space-y-4 mb-4 overflow-y-auto pr-2 flex-grow text-left max-h-[50vh]">
+            <div class="custom-scroll space-y-4 mb-4 min-h-0 overflow-y-auto pr-2 flex-grow text-left">
                 <!-- Q1 -->
                 <div class="bg-white/60 p-3 rounded-xl border border-pink-200">
                     <p class="text-sm font-semibold mb-2">1. Какой будем строить дом?</p>
@@ -284,7 +289,7 @@
         </div>
 
         <!-- Слайд 4: Группа поддержки (карточки) + Видео -->
-        <div id="slide-4" class="slide flex-col h-full flex-grow">
+        <div id="slide-4" class="slide flex-col h-full flex-grow overflow-y-auto custom-scroll min-h-0">
             <div id="game-header" class="mb-4 mt-2">
                 <h2 class="text-3xl cinematic-text text-pink-600 mb-2">Группа поддержки</h2>
                 <p class="text-gray-600 text-sm">
@@ -315,7 +320,7 @@
         </div>
 
         <!-- Слайд 5: Казино "ЖЕНЮРУМ" - Праздничный слот-автомат -->
-        <div id="slide-5" class="slide flex-col h-full flex-grow justify-between text-center">
+        <div id="slide-5" class="slide flex-col h-full flex-grow justify-between text-center overflow-y-auto custom-scroll min-h-0">
             <div>
                 <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Розыгрыш подарков</span>
                 <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-0.5">Казино «ЖЕНЮРУМ»</h2>
@@ -396,7 +401,7 @@
         </div>
 
         <!-- Слайд 6: Финал и официальный контракт -->
-        <div id="slide-6" class="slide flex-col h-full justify-center flex-grow text-center">
+        <div id="slide-6" class="slide flex-col h-full justify-center flex-grow text-center overflow-y-auto custom-scroll min-h-0">
             <div class="w-36 h-36 mx-auto rounded-2xl overflow-hidden shadow-lg mb-3 transform -rotate-3 border-4 border-white mt-1 ring-4 ring-pink-200/50">
                 <img src="images/final.jpg" onerror="this.src='https://placehold.co/400x400/ffb6c1/ffffff?text=Самое+теплое+селфи'" alt="Наше селфи" class="w-full h-full object-cover">
             </div>
