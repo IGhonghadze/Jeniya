@@ -322,31 +322,13 @@
         <!-- Слайд 5: Казино "ЖЕНЮРУМ" - Праздничный слот-автомат -->
         <div id="slide-5" class="slide flex-col h-full flex-grow justify-between text-center overflow-y-auto custom-scroll min-h-0">
             <div>
-                <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Розыгрыш подарков</span>
+                <span class="text-pink-400 text-xs font-bold tracking-widest uppercase mb-1 block">🎰 Главный розыгрыш</span>
                 <h2 class="text-2xl md:text-3xl cinematic-text text-pink-600 mb-0.5">Казино «ЖЕНЮРУМ»</h2>
                 <p class="text-gray-600 mb-2 text-xs">
-                    Испытай удачу главной героини! Крути слоты и выбивай подарки! 💖
+                    Испытай удачу главной героини! Крути слоты и сорви джекпот! 💖
                 </p>
             </div>
 
-            <!-- Инвентарь выигранных призов (Цветы, Сладости, Деньги) -->
-            <div class="grid grid-cols-3 gap-2 mb-2">
-                <div id="prize-flowers" class="bg-white/50 border border-dashed border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all opacity-40">
-                    <span class="text-xl">💐</span>
-                    <span class="text-[10px] font-bold text-gray-500 prize-title">Цветы</span>
-                    <span class="text-[8px] text-gray-400 font-medium prize-sub">заблокировано</span>
-                </div>
-                <div id="prize-sweets" class="bg-white/50 border border-dashed border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all opacity-40">
-                    <span class="text-xl">🍫</span>
-                    <span class="text-[10px] font-bold text-gray-500 prize-title">Сладости</span>
-                    <span class="text-[8px] text-gray-400 font-medium prize-sub">заблокировано</span>
-                </div>
-                <div id="prize-money" class="bg-white/90 border border-pink-300 rounded-xl p-1.5 flex flex-col items-center justify-center transition-all">
-                    <span class="text-xl">💳</span>
-                    <span class="text-[10px] font-bold text-pink-600">Куш</span>
-                    <span id="prize-money-status" class="text-[10px] font-extrabold text-pink-500">0 ₽</span>
-                </div>
-            </div>
 
             <!-- Игровой автомат -->
             <div class="bg-gradient-to-b from-pink-500 via-rose-400 to-pink-600 p-3 rounded-2xl shadow-xl border-4 border-yellow-200/90 relative overflow-hidden my-auto">
@@ -395,7 +377,7 @@
                     <i class="fa-solid fa-rotate"></i> КРУТИТЬ! 🎰
                 </button>
                 <button id="claim-btn" onclick="claimReward()" class="hidden w-full bg-gradient-to-r from-emerald-400 to-green-600 text-white rounded-full py-3 text-base font-black tracking-wide shadow-xl animate-bounce transition-all flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-gift"></i> Забрать все подарки! 🎁
+                    <i class="fa-solid fa-gift"></i> Забрать свой выигрыш! 💰
                 </button>
             </div>
         </div>
@@ -417,11 +399,10 @@
                 <p class="text-[11px] text-gray-600 mb-2">Настоящим подтверждается продление сериала "ЖЕНЮРУМ" на следующий сезон длиною в жизнь.</p>
                 
                 <!-- Пакет подарков -->
-                <div class="bg-pink-50 border border-pink-200 text-pink-900 p-2.5 rounded-xl text-xs font-semibold mb-3 text-left space-y-1 shadow-sm">
-                    <div class="font-bold text-pink-700 text-center text-[11px] mb-1">🎁 Твой выигранный подарочный набор:</div>
-                    <div class="flex items-center gap-2"><span class="text-base">💐</span> Шикарный букет цветов</div>
-                    <div class="flex items-center gap-2"><span class="text-base">🍫</span> Коробка любимых сладостей</div>
-                    <div class="flex items-center gap-2"><span class="text-base">💳</span> <strong class="text-pink-600">20 000 ₽</strong> на любые твои капризы</div>
+                <div class="bg-pink-50 border border-pink-200 text-pink-900 p-2.5 rounded-xl text-xs font-semibold mb-3 text-center shadow-sm">
+                    <div class="font-bold text-pink-700 text-[11px] mb-2">🎁 Твой выигранный джекпот:</div>
+                    <div class="text-xl font-black text-pink-600">20 000 ₽</div>
+                    <div class="text-[10px] mt-1 text-gray-500">на любые твои капризы</div>
                 </div>
 
                 <button id="sign-btn" onclick="signContract()" class="w-full bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-lg py-2.5 font-semibold shadow hover:shadow-lg transition-all flex items-center justify-center gap-2">
@@ -644,13 +625,13 @@
             { reels: ['💎', '💎', '🍋'], delta: -1000, balance: 2000, text: '😬 Эх, почти выпал алмаз... -1 000 ₽', isWin: false },
             { reels: ['🍾', '🍾', '🍾'], delta: 3000, balance: 5000, text: '🍾 ТРИ ШАМПАНСКИХ! +3 000 ₽! Праздник продолжается!', isWin: true },
             { reels: ['🍋', '💣', '🍒'], delta: -1500, balance: 3500, text: '💣 Казино сопротивляется! -1 500 ₽', isWin: false },
-            { reels: ['🍫', '🍫', '🍫'], delta: 1500, balance: 5000, text: '🍬 ТРИ ШОКОЛАДА! +1 500 ₽ И ВЫИГРАНА КОРОБКА КОНФЕТ! 🍫', isWin: true, prize: 'sweets' },
+            { reels: ['🍫', '🍫', '🍫'], delta: 1500, balance: 5000, text: '🍬 ТРИ ШОКОЛАДА! +1 500 ₽ В КОПИЛКУ!', isWin: true },
             { reels: ['👑', '💎', '👑'], delta: -1500, balance: 3500, text: '👑 Корона мимо! -1 500 ₽', isWin: false },
             { reels: ['7️⃣', '7️⃣', '7️⃣'], delta: 4500, balance: 8000, text: '🔥 ТРИ СЕМЁРКИ! +4 500 ₽! Вот это фарт!', isWin: true },
             { reels: ['💔', '🍋', '🍒'], delta: -3000, balance: 5000, text: '💔 Драма накаляется! -3 000 ₽', isWin: false },
             { reels: ['👑', '👑', '👑'], delta: 4000, balance: 9000, text: '👑 ТРИ КОРОНЫ! +4 000 ₽! Королевский банк!', isWin: true },
             { reels: ['🍋', '💣', '🍋'], delta: -3000, balance: 6000, text: '💣 Ловушка казино! -3 000 ₽', isWin: false },
-            { reels: ['🌹', '🌹', '🌹'], delta: 2000, balance: 8000, text: '💐 ТРИ РОЗЫ! +2 000 ₽ И ВЫИГРАН ШИКАРНЫЙ БУКЕТ ЦВЕТОВ! 🌹', isWin: true, prize: 'flowers' },
+            { reels: ['🌹', '🌹', '🌹'], delta: 2000, balance: 8000, text: '💐 ТРИ РОЗЫ! +2 000 ₽! УВЕРЕННО ДВИГАЕМСЯ К ЦЕЛИ!', isWin: true },
             { reels: ['💣', '💔', '🍋'], delta: -4000, balance: 4000, text: '😱 Ограбление среди бела дня! -4 000 ₽', isWin: false },
             { reels: ['🍾', '🍾', '🍾'], delta: 5000, balance: 9000, text: '🍾 КАМБЭК ГОДА! +5 000 ₽! Открываем игристое!', isWin: true },
             { reels: ['🍋', '🍋', '👑'], delta: -2000, balance: 7000, text: '🎢 Снова американские горки! -2 000 ₽', isWin: false },
@@ -734,29 +715,7 @@
         }
 
         function unlockPrize(type) {
-            if (type === 'sweets') {
-                const el = document.getElementById('prize-sweets');
-                el.classList.remove('opacity-40', 'border-dashed');
-                el.classList.add('bg-amber-100', 'border-amber-400', 'border-2', 'shadow-md', 'scale-105');
-                el.querySelector('.prize-title').innerText = 'Конфеты 🍬';
-                el.querySelector('.prize-title').classList.replace('text-gray-500', 'text-amber-800');
-                el.querySelector('.prize-sub').innerText = 'ВЫИГРАНО! ❤️';
-                el.querySelector('.prize-sub').classList.replace('text-gray-400', 'text-amber-600');
-                if (typeof confetti === 'function') {
-                    confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 }, colors: ['#d4a373', '#ffccd5', '#faedcd'] });
-                }
-            } else if (type === 'flowers') {
-                const el = document.getElementById('prize-flowers');
-                el.classList.remove('opacity-40', 'border-dashed');
-                el.classList.add('bg-pink-100', 'border-pink-400', 'border-2', 'shadow-md', 'scale-105');
-                el.querySelector('.prize-title').innerText = 'Букет 💐';
-                el.querySelector('.prize-title').classList.replace('text-gray-500', 'text-pink-800');
-                el.querySelector('.prize-sub').innerText = 'ВЫИГРАНО! ❤️';
-                el.querySelector('.prize-sub').classList.replace('text-gray-400', 'text-pink-600');
-                if (typeof confetti === 'function') {
-                    confetti({ particleCount: 50, spread: 70, origin: { y: 0.7 }, colors: ['#ff4d6d', '#ff758f', '#ffccd5'] });
-                }
-            }
+            // Призы убраны, чтобы не спойлерить
         }
 
         function spinSlots() {
